@@ -1,6 +1,8 @@
 function refreshWeather(response) {
   let temperatureElement = document.querySelector("#temp-value");
   currentTemperature = response.data.temperature.current;
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(currentTemperature);
 }
 
@@ -13,10 +15,11 @@ function searchCity(city) {
 function handleSearch(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input");
-  let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = searchInput.value;
+
   searchCity(searchInput.value);
 }
 
 let searchFormElement = document.querySelector("#search-form-id");
 searchFormElement.addEventListener("submit", handleSearch);
+
+searchCity("Lancaster");
