@@ -65,19 +65,19 @@ main {
 }
 
 .weather-icon {
-  font-size: 52px;
-  margin-top: 15px;
+  width: 70px;
+  height: 70px;
+  margin-top: 10px;
 }
 
 .weather-temp-value {
   font-size: 80px;
   font-weight: 700;
-  margin-left: 10px;
 }
 
 .weather-temp-unit {
   font-size: 30px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 footer {
