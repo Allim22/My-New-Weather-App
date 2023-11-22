@@ -80,6 +80,29 @@ main {
   margin-top: 10px;
 }
 
+.weather-forecast {
+  margin-top: 25px;
+  display: flex;
+  text-align: center;
+}
+
+.forecast-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.weather-forecast-date {
+  font-size: 16px;
+}
+
+.weather-forecast-temp {
+  font-size: 14px;
+}
+
+.weather-forecast-temp-low {
+  opacity: 0.6;
+}
+
 footer {
   text-align: center;
   padding-top: 30px;
