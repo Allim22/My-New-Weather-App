@@ -9,8 +9,6 @@ function refreshWeather(response) {
   let date = new Date(response.data.time * 1000);
   let iconElement = document.querySelector("#icon");
 
-  console.log(response.data);
-
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(currentTemperature);
   descriptionElement.innerHTML = response.data.condition.description;
@@ -18,6 +16,8 @@ function refreshWeather(response) {
   windElement.innerHTML = `${response.data.wind.speed}mph`;
   timeElement.innerHTML = formatDate(date);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon"/>`;
+
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -55,9 +55,15 @@ function handleSearch(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
+function getForecast(city) {
+  let apiKey = "c22cfddt3bf5bdc2752045c984obafed";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
+  axios(apiUrl).then(displayForecast);
+  console.log(apiUrl);
+}
 
+function displayForecast(response) {
+  console.log(response);
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
 
@@ -78,6 +84,7 @@ function displayForecast() {
     `;
   });
 
+  let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
 
@@ -85,4 +92,3 @@ let searchFormElement = document.querySelector("#search-form-id");
 searchFormElement.addEventListener("submit", handleSearch);
 
 searchCity("Lancaster");
-displayForecast();
